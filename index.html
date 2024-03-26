@@ -1,63 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>IP Address to Discord Webhook</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
-    <h1>Get IP Address and Send to Discord</h1>
-    <button id="send-ip-button">Get IP Address and Send to Discord</button>
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Cool Website</title> <style> body { margin: 0; font-family: Arial, sans-serif; }
+header { background-color: #333; color: #fff; padding: 1rem; }
 
-    <script>
-        $(document).ready(function() {
-            // Function to fetch the user's IP address
-            function getUserIP() {
-                return new Promise((resolve, reject) => {
-                    $.get("https://api.ipify.org/?format=json", (data) => {
-                        resolve(data.ip);
-                    }).fail(() => {
-                        reject(new Error("Error fetching IP address."));
-                    });
-                });
-            }
+header h1 { margin: 0; }
 
-            // Function to send the user's IP address to a Discord webhook
-            async function sendIPToDiscord(ip) {
-                const url = "https://discord.com/api/webhooks/1221944540232155176/BvhKbb1RhhQoTRXFAZdwEDsw3WHd3ydBvh__taQpj_pONFN2R_dIIfVFxCP4Mc5FjlRj";
-                const message = `${ip}`;
-                const payload = {
-                    content: message
-                };
+main { display: flex; justify-content: space-around; padding: 2rem; }
 
-                const settings = {
-                    async: true,
-                    crossDomain: true,
-                    url: url,
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    processData: false,
-                    data: JSON.stringify(payload)
-                };
+section { flex-basis: 30%; padding: 1rem; box-shadow: 1px 1px 5px #333; }
 
-                await $.ajax(settings).done(function(response) {
-                    console.log("The IP address has been successfully sent to Discord.");
-                }).fail(function(error) {
-                    console.error("Error sending the IP address to Discord:", error);
-                });
-            }
+section h2 { margin: 0 0 1rem; }
 
-            // Binding click event to the button
-            $("#send-ip-button").click(async function() {
-                try {
-                    const ip = await getUserIP();
-                    await sendIPToDiscord(ip);
-                } catch (error) {
-                    console.error(error);
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+section p { line-height: 1.5; }
+
+footer { background-color: #333; color: #fff; padding: 1rem; margin-top: 2rem; }
+
+footer p { margin: 0; } </style>
+
+</head> <body> <header> <h1>Welcome to my cool website!</h1> </header> <main> <section> <h2>About Me</h2> <p>I'm a software engineer with a passion for creating cool websites. I specialize in HTML, CSS, and JavaScript.</p> </section> <section> <h2>My Work</h2> <p>I've worked on a variety of web projects, including e-commerce sites, social media platforms, and personal blogs. Check out my portfolio to see some of my recent projects!</p> </section> <section> <h2>Contact Me</h2> <p>Feel free to reach out to me if you have any questions or would like to collaborate on a project. I'm always happy to chat!</p> </section> </main> <footer> <p>Copyright © 2023 Cool Website</p> </footer> </body> </html>
